@@ -9,21 +9,75 @@
     <title>Stranger Things</title>
     <meta name="description" content="Stranger Things">
     <meta name="author" content="Andy O'Neill">
-    
+
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
 
     <style>
-        html {
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
             background: black;
+            background-image: radial-gradient(rgba(0, 150, 0, 0.5), black 200%);
             color: white;
             font-family: 'VT323', monospace;
+            font-size: 48px;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 4px);
+            pointer-events: none;
+        }
+
+        p {
+            margin: 12px;
+            transform: scale(1, -1);
+        }
+
+        a {
+            color: white;
+        }
+
+        div {
+            margin: 24px 12px;
+        }
+
+        input {
+            background-color: black;
+            border: 2px solid white;
+            box-shadow: 0 0 5px #C8C8C8;
+            color: white;
+            font-family: 'VT323', monospace;
+            font-size: 48px;
+            padding: 8px;
+            transform: scale(1, -1);
+            width: 100%;
+        }
+
+        input:focus {
+            outline: none;
         }
     </style>
 
 </head>
 
 <body>
-    <p>This is a test.</p>
+    <p>Type your message:</p>
+    <div>
+        <input type="text" placeholder="▊">
+    </div>
+    <p><a href="#">SEND</a></p>
     <script>
     </script>
 </body>

@@ -75,10 +75,26 @@
 <body>
     <p>Type your message:</p>
     <div>
-        <input type="text" placeholder="▊">
+        <input id="message" type="text" placeholder="▊">
     </div>
-    <p><a href="#">SEND</a></p>
+    <p><a id="send" href="#">SEND</a></p>
+
     <script>
+        document.getElementById("send").onclick = function () {
+            const value = document.getElementById("message").value;
+
+            if (!value) return;
+
+            fetch("/blink", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: value })
+            });
+
+            document.getElementById("message").value = "";
+        }
     </script>
 </body>
 

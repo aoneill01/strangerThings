@@ -3,6 +3,7 @@
 #define DATA_PIN 6
 
 CRGB leds[NUM_LEDS];
+uint8_t lightLocations[] = { 49, 48, 47, 46, 45, 44, 43, 42, 21, 22, 23, 24, 25, 26, 27, 28, 29, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
 void setup() {
   Serial.begin(9600);
@@ -12,18 +13,17 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     char letter = Serial.read();
-    int light = (letter | 0x20) - 'a';
-    if (light >= 26 || light < 0) {
-      if (letter == ' ') {
-        delay(1000);
-      }
-      if (letter == '!') {
-        flash();
-      }
-      return;
-    }
+    char maskedLetter = letter | 0x20;
     
-    blinkLight(light);
+    if (maskedLetter >= 'a' && maskedLetter <= 'z') {
+      blinkLight(lightLocations[maskedLetter - 'a']);
+    }
+    else if (letter == ' ') {
+      delay(800);
+    }
+    else if (letter == '!') {
+      flash();
+    }
   }
 }
 
@@ -43,10 +43,13 @@ void blinkLight(int light) {
 
 void flash() {
   for (int i = 0; i < 2000; i++) {
-    long light = random(0, NUM_LEDS);
-    leds[light] = CHSV(light * 51, 255, 255);
+    long light1 = random(0, NUM_LEDS);
+    long light2 = random(0, NUM_LEDS);
+    leds[light1] = CHSV(light1 * 51, 255, 255);
+    leds[light2] = CHSV(light2 * 51, 255, 255);
     FastLED.show();
-    leds[light] = CRGB::Black;
+    leds[light1] = CRGB::Black;
+    leds[light2] = CRGB::Black;
   }
   FastLED.show();
 }

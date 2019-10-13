@@ -6,7 +6,7 @@ Node Express source code for server is located in `/server`. From that directory
 
 ```
 npm install
-npm run
+npm start
 ```
 
 http://localhost:1953

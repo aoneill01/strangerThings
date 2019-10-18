@@ -3,7 +3,7 @@
 #define DATA_PIN 6
 
 CRGB leds[NUM_LEDS];
-uint8_t lightLocations[] = { 49, 48, 47, 46, 45, 44, 43, 42, 21, 22, 23, 24, 25, 26, 27, 28, 29, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+uint8_t lightLocations[] = { 46, 45, 44, 43, 42, 41, 40, 39, 21, 22, 23, 24, 25, 26, 27, 28, 29, 11, 10, 9, 8, 7, 6, 5, 4, 3 };
 
 void setup() {
   Serial.begin(9600);

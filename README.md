@@ -6,7 +6,12 @@ Node Express source code for server is located in `/server`. From that directory
 
 ```
 npm install
-npm start
+npm run start:local
 ```
 
 http://localhost:1953
+
+*Docker notes:*
+
+    docker build -t stranger-things:0.1 .
+    docker run -d -p 1983:1983 -p 3891:3891 --name stranger-things stranger-things:0.1
